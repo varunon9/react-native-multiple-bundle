@@ -17,6 +17,16 @@ allprojects {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+
+        // needed for react-native: https://reactnative.dev/docs/integration-with-existing-apps
+        maven {
+            // All of React Native (JS, Android binaries) is installed from npm
+            url "$rootDir/RNCodeSplitting/node_modules/react-native/android"
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/RNCodeSplitting/node_modules/jsc-android/dist")
+        }
     }
 }
 
