@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -53,6 +53,10 @@ const Section = ({children, title}): Node => {
 };
 
 const App: () => Node = () => {
+
+  useEffect(() => {
+    console.log('App.useEffect', Date.now());
+  }, []);
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
