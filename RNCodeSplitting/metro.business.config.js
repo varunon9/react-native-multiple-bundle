@@ -12,11 +12,16 @@ fs.readFileSync(MAP_FILE, 'utf8').toString().split('\n').forEach((content) => {
 });
 
 (function() {
-  console.log('*****************');
-  console.log('Generating business.android.bundle');
-  console.log('Once the file is generated, make the following changes manually');
-  console.log('Remove all init/polyfill functions i.e. this bundle should only contain __d & __r statements')
-  console.log('*****************');
+  console.log(
+    `
+    *****************
+    Generating business.android.bundle
+    Make sure that both common.android.bundle & ${MAP_FILE} are updated
+    If you want to generate bytecode then use "yarn hermes-bundle"
+    This single command will generate both common.android.bundle & business.android.bundle as binary file
+    *****************
+    `
+  )
 })();
 
 function getParsedModulePath(path) {
@@ -31,7 +36,7 @@ module.exports = {
         experimentalImportSupport: false,
         inlineRequires: true,
       },
-    }),
+    })
   },
   serializer: {
     createModuleIdFactory: function () {
@@ -59,5 +64,19 @@ module.exports = {
       }
       return false;
     },
+    // we don't need polyfills here as they are already part of common bundle
+    // sadly, require.js polyfill would still be included :(
+    // https://github.com/facebook/metro/blob/master/packages/metro/src/lib/getPrependedScripts.js
+    // https://github.com/facebook/metro/blob/master/packages/metro-config/src/defaults/defaults.js
+    getPolyfills: () => [],
+    postProcessBundleSourcemap: ({code, map, outFileName}) => {
+      // we could have excluded require.js polyfill here
+      // however this parameter is not yet implemented
+      // Check: https://github.com/facebook/metro/issues/400
+      // for now post-business-js-bundle script is doing this job for us
+      return {
+        code, map
+      };
+    }
   },
 };

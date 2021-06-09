@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "android-js-bundle": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output ../app/src/main/assets/index.android.bundle --assets-dest=../app/src/main/res",
     "common-js-bundle": "npx react-native bundle --platform android --config metro.common.config.js --dev false --entry-file common.js --bundle-output ../app/src/main/assets/common.android.bundle --assets-dest=../app/src/main/res",
-    "business-js-bundle": "npx react-native bundle --platform android --config metro.business.config.js --dev false --entry-file business.js --bundle-output ../app/src/main/assets/business.android.bundle --assets-dest=../app/src/main/res"
+    "business-js-bundle": "npx react-native bundle --platform android --config metro.business.config.js --dev false --entry-file business.js --bundle-output ../app/src/main/assets/business.android.bundle --assets-dest=../app/src/main/res",
+    "post-business-js-bundle": "node removePolyfill.js",
+    "common-hermes-bundle": "node generateHermesBundle.js"
   },
   "dependencies": {
     "react": "17.0.1",
