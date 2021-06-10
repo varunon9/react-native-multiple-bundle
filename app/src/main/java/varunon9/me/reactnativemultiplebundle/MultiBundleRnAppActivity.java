@@ -82,7 +82,7 @@ public class MultiBundleRnAppActivity extends AppCompatActivity implements Defau
             ReactContext reactContext = mReactInstanceManager.getCurrentReactContext();
             try {
                 CatalystInstance catalyst = reactContext.getCatalystInstance();
-                ((CatalystInstanceImpl)catalyst).loadScriptFromAssets(reactContext.getAssets(), "assets://business.android.bundle",true);
+                ((CatalystInstanceImpl) catalyst).loadScriptFromAssets(reactContext.getAssets(), "assets://business.android.hermes.bundle", true);
 
                 // The string here (e.g. "MultiBundleRnApp") has to match
                 // the string in AppRegistry.registerComponent() in business.js

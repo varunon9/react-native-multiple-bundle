@@ -22,7 +22,8 @@ public class SingletonReactInstanceManager {
             reactInstanceManager = ReactInstanceManager.builder()
                     .setApplication(activity.getApplication())
                     .setCurrentActivity(activity)
-                    .setJSBundleFile("assets://common.android.bundle")
+                    //.setJSBundleFile("assets://common.android.bundle")
+                    .setJSBundleFile("assets://common.android.hermes.bundle")
                     .addPackages(Arrays.<ReactPackage>asList(
                             new MainReactPackage()
                     ))
