@@ -4051,6 +4051,11 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+line-replace@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/line-replace/-/line-replace-2.0.1.tgz#227c8839003b178dd080ca67fd280eb537f8c168"
+  integrity sha512-CSr3f6gynLCA9R+RBS0IDIfv7a8OAXcuyq+CHgq0WzbQ7KSJQfF5DgtpRVxpSp1KBNXogtzbNqAeUjrmHYTPYA==
+
 lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"

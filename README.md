@@ -200,7 +200,8 @@ Reference: https://segmentfault.com/a/1190000039834087/en
 
 ```
 private void bootCommonRnBundle() {
-    ReactInstanceManager reactInstanceManager = SingletonReactInstanceManager.getReactInstanceManager(this);
+    ReactInstanceManager reactInstanceManager = 
+            SingletonReactInstanceManager.getReactInstanceManager(this);
     reactInstanceManager.createReactContextInBackground();
 }
 ```
@@ -249,7 +250,9 @@ private void loadReactNativeApp() {
         ReactContext reactContext = mReactInstanceManager.getCurrentReactContext();
         try {
             CatalystInstance catalyst = reactContext.getCatalystInstance();
-            ((CatalystInstanceImpl)catalyst).loadScriptFromAssets(reactContext.getAssets(), "assets://business.android.bundle",true);
+            ((CatalystInstanceImpl)catalyst).loadScriptFromAssets(
+                    reactContext.getAssets(), 
+                    "assets://business.android.bundle",true);
 
             // The string here (e.g. "MultiBundleRnApp") has to match
             // the string in AppRegistry.registerComponent() in business.js
@@ -300,4 +303,7 @@ useEffect(() => {
 ```
 
 I then took difference of two.
+
+
+Blog: https://varunon9.medium.com/loading-multiple-bundles-in-react-native-code-splitting-using-metro-44d45530e958
  

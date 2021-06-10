@@ -22,4 +22,22 @@
 * Failing to do so will cause error `com.facebook.jni.CppException: Requiring unknown module`
 */
 
+// Note: This will only work for minified bundle i.e. dev = false
+
+const lineReplace = require('line-replace')
+
 const bundlePath = '../app/src/main/assets/business.android.bundle';
+
+lineReplace({
+  file: bundlePath,
+  line: 1, // assuming that polyfill function will be line 1
+  text: '', // remove line 1
+  addNewLine: false,
+  callback: ({ file, line, text, replacedText, error }) => {
+    if (!error) {
+      console.log(`Removed ${replacedText}`);
+    } else {
+      console.error(error);
+    }
+  }
+});
